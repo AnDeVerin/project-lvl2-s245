@@ -1,8 +1,8 @@
 # adv-hexlet-2
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
-[![Build Status](https://travis-ci.org/AnDeVerin/project-lvl1-s244.svg?branch=master)](https://travis-ci.org/AnDeVerin/project-lvl1-s244)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e8248f3e8293c13bc01d/maintainability)](https://codeclimate.com/github/AnDeVerin/project-lvl2-s245/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e8248f3e8293c13bc01d/test_coverage)](https://codeclimate.com/github/AnDeVerin/project-lvl2-s245/test_coverage)
+[![Build Status](https://travis-ci.org/AnDeVerin/project-lvl2-s245.svg?branch=master)](https://travis-ci.org/AnDeVerin/project-lvl2-s245)
 
 
 [Мой учебный проект @hexlet.io](https://ru.hexlet.io/u/andeverin)
