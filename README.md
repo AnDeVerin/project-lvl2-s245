@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/AnDeVerin/project-lvl1-s244.svg?branch=master)](https://travis-ci.org/AnDeVerin/project-lvl1-s244)
 
 
-Учебный проект [@hexlet.io](https://ru.hexlet.io/projects)
+[Мой учебный проект @hexlet.io](https://ru.hexlet.io/u/andeverin)
 ## Проект Вычислитель отличий / Фронтенд JS-программист
 ### Уровень: 2. Старт проекта 23 апреля 2018
 

@@ -1,0 +1,42 @@
+{
+  "name": "adv-hexlet-2",
+  "version": "1.0.0",
+  "description": "project 2 (gendiff) at hexlet.io",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnDeVerin/project-lvl2-s245.git"
+  },
+  "author": "Andrey Vershinin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnDeVerin/project-lvl2-s245/issues"
+  },
+  "homepage": "https://github.com/AnDeVerin/project-lvl2-s245#readme",
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-eslint": "*",
+    "babel-preset-env": "*",
+    "babel-preset-stage-0": "*",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build",
+    "eslint": "eslint"
+  },
+  "bin": {
+    "gendiff": "dist/bin/gendiff"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "commander": "^2.15.1"
+  }
+}
