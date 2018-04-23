@@ -31,7 +31,7 @@
     "eslint": "eslint"
   },
   "bin": {
-    "gendiff": "dist/bin/gendiff"
+    "gendiff": "dist/bin/gendiff.js"
   },
   "files": [
     "dist"
