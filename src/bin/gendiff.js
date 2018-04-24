@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import program from 'commander';
+import genDiff from '../.';
 
 program
   .version('0.1.0')
@@ -10,4 +11,9 @@ program
 
 program.parse(process.argv);
 
-if (!program.args.length) program.help();
+if (program.args.length < 2) {
+  console.log('Error: There are not enough files to compare!');
+  process.exit(1);
+} else {
+  console.log(genDiff(program.args[0], program.args[1]));
+}
