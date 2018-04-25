@@ -1,11 +1,21 @@
 import fs from 'fs';
 import _ from 'lodash';
+import path from 'path';
+import getParser from './parsers';
 
 export default (source1, source2) => {
   const fileContent1 = fs.readFileSync(source1, 'utf8');
   const fileContent2 = fs.readFileSync(source2, 'utf8');
-  const obj1 = JSON.parse(fileContent1);
-  const obj2 = JSON.parse(fileContent2);
+
+  const ext1 = path.extname(source1);
+  const parse1 = getParser(ext1);
+
+  // можно использовать разные форматы файлов, получая отдельный парсер для каждого файла
+  //  const ext2 = path.extname(source2);
+  //  const parse2 = getParser(ext2);
+
+  const obj1 = parse1(fileContent1);
+  const obj2 = parse1(fileContent2);
   const allKeys = Object.keys({ ...obj1, ...obj2 });
 
   const resultBuilder = (acc, key) => {
