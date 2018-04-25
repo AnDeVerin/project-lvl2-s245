@@ -7,13 +7,10 @@ program
   .version('0.1.0')
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format [type]', 'output format')
-  .arguments('<firstConfig> <secondConfig>');
+  .arguments('<firstConfig> <secondConfig>')
+  .action((firstConfig, secondConfig) => console.log(genDiff(firstConfig, secondConfig)));
 
 program.parse(process.argv);
 
-if (program.args.length < 2) {
-  console.log('Error: There are not enough files to compare!');
-  process.exit(1);
-} else {
-  console.log(genDiff(program.args[0], program.args[1]));
-}
+if (!program.args.length) program.help();
+
