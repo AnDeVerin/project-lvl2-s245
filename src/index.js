@@ -14,20 +14,18 @@ export default (source1, source2) => {
   const obj2 = parse(fileContent2);
   const keys = _.union(_.keys(obj1), _.keys(obj2));
 
-  const resultBuilder = (acc, key) => {
+  const resultList = _.flatten(keys.map((key) => {
     const inObj1 = _.has(obj1, key);
     const inObj2 = _.has(obj2, key);
 
-    if (obj1[key] === obj2[key]) return [...acc, `  ${key}: ${obj1[key]}`];
+    if (obj1[key] === obj2[key]) return `  ${key}: ${obj1[key]}`;
 
-    if (inObj1 && inObj2) return [...acc, [`+ ${key}: ${obj2[key]}`, `- ${key}: ${obj1[key]}`]];
+    if (inObj1 && inObj2) return [`+ ${key}: ${obj2[key]}`, `- ${key}: ${obj1[key]}`];
 
-    if (inObj1) return [...acc, `- ${key}: ${obj1[key]}`];
+    if (inObj1) return `- ${key}: ${obj1[key]}`;
 
-    return [...acc, `+ ${key}: ${obj2[key]}`];
-  };
-
-  const resultList = _.flatten(keys.reduce(resultBuilder, []));
+    return `+ ${key}: ${obj2[key]}`;
+  }));
 
   return `{\n  ${resultList.join('\n  ')}\n}`;
 };
