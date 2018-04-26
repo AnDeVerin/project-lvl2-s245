@@ -1,0 +1,171 @@
+[
+  {
+    "name": "common",
+    "type": "object",
+    "status": "unchanged",
+    "value":  "",
+    "children": [
+      {
+        "name": "setting1",
+        "type": "value",
+        "status": "unchanged",
+        "value": "Value 1",
+        "children": []
+      },
+      {
+        "name": "setting2",
+        "type": "value",
+        "status": "deleted",
+        "value": "200",
+        "children": []
+      },
+      {
+        "name": "setting3",
+        "type": "value",
+        "status": "deleted",
+        "value": "true",
+        "children": []
+      },
+      {
+        "name": "setting3",
+        "type": "object",
+        "status": "added",
+        "value": "",
+        "children": [
+          {
+            "name": "key",
+            "type": "value",
+            "status": "unchanged",
+            "value": "value",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "setting6",
+        "type": "object",
+        "status": "unchanged",
+        "value": "",
+        "children": [
+          {
+            "name": "key",
+            "type": "value",
+            "status": "unchanged",
+            "value": "value",
+            "children": []
+          },
+          {
+            "name": "ops",
+            "type": "value",
+            "status": "added",
+            "value": "vops",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "setting4",
+        "type": "value",
+        "status": "added",
+        "value": "blah blah",
+        "children": []
+      },
+      {
+        "name": "setting5",
+        "type": "object",
+        "status": "added",
+        "value": "",
+        "children": [
+          {
+            "name": "key5",
+            "type": "value",
+            "status": "unchanged",
+            "value": "value5",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "group1",
+    "type": "object",
+    "status": "unchanged",
+    "value":  "",
+    "children": [
+      {
+        "name": "baz",
+        "type": "value",
+        "status": "added",
+        "value":  "bars",
+        "children": []
+      },
+      {
+        "name": "baz",
+        "type": "value",
+        "status": "deleted",
+        "value":  "bas",
+        "children": []
+      },
+      {
+        "name": "foo",
+        "type": "value",
+        "status": "unchanged",
+        "value":  "bar",
+        "children": []
+      },
+      {
+        "name": "nest",
+        "type": "object",
+        "status": "deleted",
+        "value":  "",
+        "children": [
+          {
+            "name": "key",
+            "type": "value",
+            "status": "unchanged",
+            "value":  "value",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "nest",
+        "type": "value",
+        "status": "added",
+        "value":  "str",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "group2",
+    "type": "object",
+    "status": "deleted",
+    "value":  "",
+    "children": [
+      {
+        "name": "abc",
+        "type": "value",
+        "status": "unchanged",
+        "value":  "12345",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "group3",
+    "type": "object",
+    "status": "added",
+    "value":  "",
+    "children": [
+      {
+        "name": "fee",
+        "type": "value",
+        "status": "unchanged",
+        "value":  "100500",
+        "children": []
+      }
+    ]
+  }
+]
