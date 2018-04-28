@@ -2,40 +2,40 @@
   {
     "name": "common",
     "type": "object",
-    "status": "unchanged",
+    "status": "=",
     "value":  "",
     "children": [
       {
         "name": "setting1",
         "type": "value",
-        "status": "unchanged",
+        "status": "=",
         "value": "Value 1",
         "children": []
       },
       {
         "name": "setting2",
         "type": "value",
-        "status": "deleted",
+        "status": "-",
         "value": "200",
         "children": []
       },
       {
         "name": "setting3",
         "type": "value",
-        "status": "deleted",
-        "value": "true",
+        "status": "-",
+        "value": true,
         "children": []
       },
       {
         "name": "setting3",
         "type": "object",
-        "status": "added",
+        "status": "+",
         "value": "",
         "children": [
           {
             "name": "key",
             "type": "value",
-            "status": "unchanged",
+            "status": "=",
             "value": "value",
             "children": []
           }
@@ -44,20 +44,20 @@
       {
         "name": "setting6",
         "type": "object",
-        "status": "unchanged",
+        "status": "=",
         "value": "",
         "children": [
           {
             "name": "key",
             "type": "value",
-            "status": "unchanged",
+            "status": "=",
             "value": "value",
             "children": []
           },
           {
             "name": "ops",
             "type": "value",
-            "status": "added",
+            "status": "+",
             "value": "vops",
             "children": []
           }
@@ -66,20 +66,20 @@
       {
         "name": "setting4",
         "type": "value",
-        "status": "added",
+        "status": "+",
         "value": "blah blah",
         "children": []
       },
       {
         "name": "setting5",
         "type": "object",
-        "status": "added",
+        "status": "+",
         "value": "",
         "children": [
           {
             "name": "key5",
             "type": "value",
-            "status": "unchanged",
+            "status": "=",
             "value": "value5",
             "children": []
           }
@@ -90,40 +90,40 @@
   {
     "name": "group1",
     "type": "object",
-    "status": "unchanged",
+    "status": "=",
     "value":  "",
     "children": [
       {
         "name": "baz",
         "type": "value",
-        "status": "added",
-        "value":  "bars",
+        "status": "-",
+        "value":  "bas",
         "children": []
       },
       {
         "name": "baz",
         "type": "value",
-        "status": "deleted",
-        "value":  "bas",
+        "status": "+",
+        "value":  "bars",
         "children": []
       },
       {
         "name": "foo",
         "type": "value",
-        "status": "unchanged",
+        "status": "=",
         "value":  "bar",
         "children": []
       },
       {
         "name": "nest",
         "type": "object",
-        "status": "deleted",
+        "status": "-",
         "value":  "",
         "children": [
           {
             "name": "key",
             "type": "value",
-            "status": "unchanged",
+            "status": "=",
             "value":  "value",
             "children": []
           }
@@ -132,7 +132,7 @@
       {
         "name": "nest",
         "type": "value",
-        "status": "added",
+        "status": "+",
         "value":  "str",
         "children": []
       }
@@ -141,13 +141,13 @@
   {
     "name": "group2",
     "type": "object",
-    "status": "deleted",
+    "status": "-",
     "value":  "",
     "children": [
       {
         "name": "abc",
         "type": "value",
-        "status": "unchanged",
+        "status": "=",
         "value":  "12345",
         "children": []
       }
@@ -156,13 +156,13 @@
   {
     "name": "group3",
     "type": "object",
-    "status": "added",
+    "status": "+",
     "value":  "",
     "children": [
       {
         "name": "fee",
         "type": "value",
-        "status": "unchanged",
+        "status": "=",
         "value":  "100500",
         "children": []
       }
