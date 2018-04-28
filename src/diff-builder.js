@@ -22,7 +22,7 @@ const buildUnchangedObj = (obj) => {
   });
 };
 
-const diffBuilder = (obj1, obj2) => {
+const buildDiff = (obj1, obj2) => {
   const keys = _.union(_.keys(obj1), _.keys(obj2));
 
   const resultList = _.flatten(keys.map((key) => {
@@ -38,7 +38,7 @@ const diffBuilder = (obj1, obj2) => {
           type: 'object',
           status: '=',
           value: '',
-          children: diffBuilder(obj1[key], obj2[key]),
+          children: buildDiff(obj1[key], obj2[key]),
         };
       }
       if (_.isObject(val1)) {
@@ -142,7 +142,4 @@ const diffBuilder = (obj1, obj2) => {
   return resultList;
 };
 
-export default (obj1, obj2) => {
-  const result = diffBuilder(obj1, obj2);
-  return result;
-};
+export default buildDiff;

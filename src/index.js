@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import getParser from './parsers';
 import buildDiff from './diff-builder';
+import renderDiff from './render';
 
 export default (source1, source2) => {
   const fileContent1 = fs.readFileSync(source1, 'utf8');
@@ -13,5 +14,6 @@ export default (source1, source2) => {
   const obj2 = parse(fileContent2);
 
   const astDiff = buildDiff(obj1, obj2);
-  return astDiff;
+  const renderedDiff = renderDiff(astDiff);
+  return renderedDiff;
 };
