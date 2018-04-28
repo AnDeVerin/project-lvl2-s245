@@ -129,14 +129,14 @@ const diffBuilder = (obj1, obj2) => {
           children: buildUnchangedObj(val2),
         };
       }
-      return {
-        name: key,
-        type: 'value',
-        status: '+',
-        value: val2,
-        children: [],
-      };
     }
+    return {
+      name: key,
+      type: 'value',
+      status: '+',
+      value: val2,
+      children: [],
+    };
   }));
 
   return resultList;
