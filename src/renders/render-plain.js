@@ -1,5 +1,15 @@
 import _ from 'lodash';
 
+const stringifyAdded = (val) => {
+  if (_.isObject(val)) return 'complex value';
+  return `value: '${val}'`;
+};
+
+const stringifyUpd = (val) => {
+  if (_.isObject(val)) return 'complex value';
+  return `'${val}'`;
+};
+
 export default (astDiff) => {
   const renderDiff = (elem, prefix) => {
     const {
@@ -13,26 +23,13 @@ export default (astDiff) => {
 
     const newName = (prefix) ? `${prefix}.${name}` : name;
 
-    const stringifyAdded = (val) => {
-      if (_.isObject(val)) return 'complex value';
-      return `value: '${val}'`;
-    };
-    const stringifyUpd = (val) => {
-      if (_.isObject(val)) return 'complex value';
-      return `'${val}'`;
-    };
-
-    if (type === 'nested') {
-      const changedChildren = children.filter(node => node.type !== 'unchanged');
-      return `${_.flatten(changedChildren.map(child => renderDiff(child, newName))).join('\n')}`;
-    }
-
     const processElem = {
-      added: `Property '${newName}' was added with ${stringifyAdded(value)}`,
-      removed: `Property '${newName}' was removed`,
-      updated: `Property '${newName}' was updated. From ${stringifyUpd(oldValue)} to ${stringifyUpd(newValue)}`,
+      added: () => `Property '${newName}' was added with ${stringifyAdded(value)}`,
+      removed: () => `Property '${newName}' was removed`,
+      updated: () => `Property '${newName}' was updated. From ${stringifyUpd(oldValue)} to ${stringifyUpd(newValue)}`,
+      nested: () => `${_.flatten(children.filter(node => node.type !== 'unchanged').map(child => renderDiff(child, newName))).join('\n')}`,
     };
-    return processElem[type];
+    return processElem[type]();
   };
 
   const changedNodes = astDiff.filter(node => node.type !== 'unchanged');

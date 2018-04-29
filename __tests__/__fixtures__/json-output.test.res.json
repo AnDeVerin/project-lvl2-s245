@@ -1,0 +1,18 @@
+{
+  "removed properties": 
+  {
+    "number": 2,
+    "properties": [
+      {
+        "common": {
+          "setting2": "200"
+        }
+      },
+      {
+        "group2": {
+          "abc": "12345"
+        }
+      }
+    ]
+  }
+}

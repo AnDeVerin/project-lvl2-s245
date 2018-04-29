@@ -6,6 +6,16 @@ const status = {
   added: '+ ',
 };
 
+// вынес функцию
+const stringify = (val, n) => {
+  if (val instanceof Object) {
+    const keys = _.keys(val);
+    const renderedKeys = keys.map(key => `${' '.repeat(n + 6)}${key}: ${val[key]}`);
+    return `{\n${renderedKeys.join('\n')}\n${' '.repeat(n + 2)}}`;
+  }
+  return val;
+};
+
 export default (astDiff) => {
   const renderDiff = (elem, spaceNum) => {
     const {
@@ -19,14 +29,6 @@ export default (astDiff) => {
     const openIndent = ' '.repeat(spaceNum);
     const closeIndent = ' '.repeat(spaceNum + 2);
     const statusLine = (type) ? status[type] : '';
-    const stringify = (val) => {
-      if (val instanceof Object) {
-        const keys = _.keys(val);
-        const renderedKeys = keys.map(key => `${' '.repeat(spaceNum + 6)}${key}: ${val[key]}`);
-        return `{\n${renderedKeys.join('\n')}\n${' '.repeat(spaceNum + 2)}}`;
-      }
-      return val;
-    };
 
     if (type === 'nested') {
       const renderedCildren = _.flatten(children.map(child => renderDiff(child, spaceNum + 4)));
@@ -34,11 +36,21 @@ export default (astDiff) => {
     }
 
     if (type === 'updated') {
-      return [`${openIndent}${status.removed}${name}: ${stringify(oldValue)}`,
-        `${openIndent}${status.added}${name}: ${stringify(newValue)}`];
+      return [`${openIndent}${status.removed}${name}: ${stringify(oldValue, spaceNum)}`,
+        `${openIndent}${status.added}${name}: ${stringify(newValue, spaceNum)}`];
     }
 
-    return `${openIndent}${statusLine}${name}: ${stringify(value)}`;
+    if (type === 'added') {
+      return `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`;
+    }
+
+    if (type === 'removed') {
+      return `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`;
+    }
+
+    // if (type === 'unchanged') - закомментировал, чтобы eslint не ругался,
+    // что нет безусловного return
+    return `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`;
   };
   const renderedList = astDiff.map(obj => renderDiff(obj, 2));
   return `{\n${renderedList.join('\n')}\n}`;
