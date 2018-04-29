@@ -1,31 +1,9 @@
 import _ from 'lodash';
 
-const buildUnchangedObj = (obj) => {
-  const keys = _.keys(obj);
-  return keys.map((key) => {
-    if (_.isObject(key)) {
-      return {
-        name: key,
-        type: 'object',
-        status: '=',
-        value: '',
-        children: buildUnchangedObj(obj[key]),
-      };
-    }
-    return {
-      name: key,
-      type: 'value',
-      status: '=',
-      value: obj[key],
-      children: [],
-    };
-  });
-};
-
 const buildDiff = (obj1, obj2) => {
   const keys = _.union(_.keys(obj1), _.keys(obj2));
 
-  const resultList = _.flatten(keys.map((key) => {
+  const resultList = keys.map((key) => {
     const inObj1 = _.has(obj1, key);
     const inObj2 = _.has(obj2, key);
     const val1 = obj1[key];
@@ -35,109 +13,38 @@ const buildDiff = (obj1, obj2) => {
       if (_.isObject(val1) && _.isObject(val2)) {
         return {
           name: key,
-          type: 'object',
-          status: '=',
-          value: '',
           children: buildDiff(obj1[key], obj2[key]),
         };
-      }
-      if (_.isObject(val1)) {
-        return [{
-          name: key,
-          type: 'object',
-          status: '-',
-          value: '',
-          children: buildUnchangedObj(val1),
-        },
-        {
-          name: key,
-          type: 'value',
-          status: '+',
-          value: val2,
-          children: [],
-        }];
-      }
-      if (_.isObject(val2)) {
-        return [{
-          name: key,
-          type: 'value',
-          status: '-',
-          value: val1,
-          children: [],
-        },
-        {
-          name: key,
-          type: 'object',
-          status: '+',
-          value: '',
-          children: buildUnchangedObj(val2),
-        }];
       }
       if (val1 === val2) {
         return {
           name: key,
-          type: 'value',
-          status: '=',
-          value: val1,
-          children: [],
-        };
-      }
-      if (val1 !== val2) {
-        return [{
-          name: key,
-          type: 'value',
-          status: '-',
-          value: val1,
-          children: [],
-        },
-        {
-          name: key,
-          type: 'value',
-          status: '+',
-          value: val2,
-          children: [],
-        }];
-      }
-    }
-
-    if (inObj1) {
-      if (_.isObject(val1)) {
-        return {
-          name: key,
-          type: 'object',
-          status: '-',
-          value: '',
-          children: buildUnchangedObj(val1),
+          type: 'unchanged',
+          oldValue: val1,
         };
       }
       return {
         name: key,
-        type: 'value',
-        status: '-',
-        value: val1,
-        children: [],
+        type: 'updated',
+        oldValue: val1,
+        newValue: val2,
       };
     }
 
-    if (inObj2) {
-      if (_.isObject(val2)) {
-        return {
-          name: key,
-          type: 'object',
-          status: '+',
-          value: '',
-          children: buildUnchangedObj(val2),
-        };
-      }
+    if (inObj1) {
+      return {
+        name: key,
+        type: 'removed',
+        oldValue: val1,
+      };
     }
+
     return {
       name: key,
-      type: 'value',
-      status: '+',
-      value: val2,
-      children: [],
+      type: 'added',
+      newValue: val2,
     };
-  }));
+  });
 
   return resultList;
 };
