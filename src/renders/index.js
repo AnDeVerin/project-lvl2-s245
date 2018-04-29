@@ -6,6 +6,4 @@ const render = {
   plain: renderPlainFormat,
 };
 
-export default (astData, format = 'rich') => {
-  return render[format](astData);
-};
+export default (astData, format = 'rich') => render[format](astData);
