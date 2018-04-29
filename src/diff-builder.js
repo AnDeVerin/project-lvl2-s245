@@ -20,7 +20,7 @@ const buildDiff = (obj1, obj2) => {
         return {
           name: key,
           type: 'unchanged',
-          oldValue: val1,
+          value: val1,
         };
       }
       return {
@@ -35,14 +35,14 @@ const buildDiff = (obj1, obj2) => {
       return {
         name: key,
         type: 'removed',
-        oldValue: val1,
+        value: val1,
       };
     }
 
     return {
       name: key,
       type: 'added',
-      newValue: val2,
+      value: val2,
     };
   });
 

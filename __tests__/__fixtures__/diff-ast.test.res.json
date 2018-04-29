@@ -5,12 +5,12 @@
       {
         "name": "setting1",
         "type": "unchanged",
-        "oldValue": "Value 1"
+        "value": "Value 1"
       },
       {
         "name": "setting2",
         "type": "removed",
-        "oldValue": "200"
+        "value": "200"
       },
       {
         "name": "setting3",
@@ -26,24 +26,24 @@
           {
             "name": "key",
             "type": "unchanged",
-            "oldValue": "value"
+            "value": "value"
           },
           {
             "name": "ops",
             "type": "added",
-            "newValue": "vops"
+            "value": "vops"
           }
         ]
       },
       {
         "name": "setting4",
         "type": "added",
-        "newValue": "blah blah"
+        "value": "blah blah"
       },
       {
         "name": "setting5",
         "type": "added",
-        "newValue": {
+        "value": {
           "key5": "value5"
         }
       }
@@ -61,7 +61,7 @@
       {
         "name": "foo",
         "type": "unchanged",
-        "oldValue": "bar"
+        "value": "bar"
       },
       {
         "name": "nest",
@@ -76,14 +76,14 @@
   {
     "name": "group2",
     "type": "removed",
-    "oldValue": {
+    "value": {
       "abc": "12345"
     }
   },
   {
     "name": "group3",
     "type": "added",
-    "newValue": {
+    "value": {
       "fee": "100500"
     }
   }

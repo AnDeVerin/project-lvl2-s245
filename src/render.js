@@ -1,16 +1,24 @@
 import _ from 'lodash';
 
+const status = {
+  unchanged: '  ',
+  removed: '- ',
+  added: '+ ',
+};
+
 export default (astDiff) => {
   const renderDiff = (elem, spaceNum) => {
     const {
       name,
       type,
+      value,
       oldValue,
       newValue,
       children,
     } = elem;
     const openIndent = ' '.repeat(spaceNum);
     const closeIndent = ' '.repeat(spaceNum + 2);
+    const statusLine = (type) ? status[type] : '';
     const stringify = (val) => {
       if (val instanceof Object) {
         const keys = _.keys(val);
@@ -25,17 +33,12 @@ export default (astDiff) => {
       return `${openIndent}  ${name}: {\n${renderedCildren.join('\n')}\n${closeIndent}}`;
     }
 
-    switch (type) {
-      case 'unchanged':
-        return `${openIndent}  ${name}: ${stringify(oldValue)}`;
-      case 'removed':
-        return `${openIndent}- ${name}: ${stringify(oldValue)}`;
-      case 'added':
-        return `${openIndent}+ ${name}: ${stringify(newValue)}`;
-      default:
-        return [`${openIndent}- ${name}: ${stringify(oldValue)}`,
-          `${openIndent}+ ${name}: ${stringify(newValue)}`];
+    if (type === 'updated') {
+      return [`${openIndent}${status.removed}${name}: ${stringify(oldValue)}`,
+        `${openIndent}${status.added}${name}: ${stringify(newValue)}`];
     }
+
+    return `${openIndent}${statusLine}${name}: ${stringify(value)}`;
   };
   const renderedList = astDiff.map(obj => renderDiff(obj, 2));
   return `{\n${renderedList.join('\n')}\n}`;
