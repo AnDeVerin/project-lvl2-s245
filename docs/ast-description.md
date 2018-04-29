@@ -1,31 +1,10 @@
-Каждый элемент - объект, со следующими свойствами:
-```
-name:
-  <>
+{
+  "name": "setting3",
+  "type": "changed",
+  "oldValue": true,
+  "newValue": {
+    "key": "value"
+  }
+}
 
-type:
-  - object
-  - value
-
-status:
-  = unchanged
-  - deleted
-  + added
-
-children:
-  []
-
-value:
-  <>
-```
-
-Проверка условий:
-
-1. inObj1 && inObj2 && obj1 && obj2
-2. inObj1 && inObj2 && obj1 && val2
-3. inObj1 && inObj2 && val1 && obj2
-4. inObj1 && inObj2 && val1 === val2
-5. inObj1 && inObj2 && val1 !== val2
-
-6. inObj1 - 
-7. inObj2 +
+Children строится только в одном случае, когда значение одного и того же ключа в обоих структурах - объект. Иначе значения никак не анализируются и добавляются в AST как есть. Их форматирование на выводе - ответственность рендерера.

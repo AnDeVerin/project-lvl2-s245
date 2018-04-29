@@ -1,171 +1,90 @@
 [
   {
     "name": "common",
-    "type": "object",
-    "status": "=",
-    "value":  "",
     "children": [
       {
         "name": "setting1",
-        "type": "value",
-        "status": "=",
-        "value": "Value 1",
-        "children": []
+        "type": "unchanged",
+        "oldValue": "Value 1"
       },
       {
         "name": "setting2",
-        "type": "value",
-        "status": "-",
-        "value": "200",
-        "children": []
+        "type": "removed",
+        "oldValue": "200"
       },
       {
         "name": "setting3",
-        "type": "value",
-        "status": "-",
-        "value": true,
-        "children": []
-      },
-      {
-        "name": "setting3",
-        "type": "object",
-        "status": "+",
-        "value": "",
-        "children": [
-          {
-            "name": "key",
-            "type": "value",
-            "status": "=",
-            "value": "value",
-            "children": []
-          }
-        ]
+        "type": "updated",
+        "oldValue": true,
+        "newValue": {
+          "key": "value"
+        }
       },
       {
         "name": "setting6",
-        "type": "object",
-        "status": "=",
-        "value": "",
         "children": [
           {
             "name": "key",
-            "type": "value",
-            "status": "=",
-            "value": "value",
-            "children": []
+            "type": "unchanged",
+            "oldValue": "value"
           },
           {
             "name": "ops",
-            "type": "value",
-            "status": "+",
-            "value": "vops",
-            "children": []
+            "type": "added",
+            "newValue": "vops"
           }
         ]
       },
       {
         "name": "setting4",
-        "type": "value",
-        "status": "+",
-        "value": "blah blah",
-        "children": []
+        "type": "added",
+        "newValue": "blah blah"
       },
       {
         "name": "setting5",
-        "type": "object",
-        "status": "+",
-        "value": "",
-        "children": [
-          {
-            "name": "key5",
-            "type": "value",
-            "status": "=",
-            "value": "value5",
-            "children": []
-          }
-        ]
+        "type": "added",
+        "newValue": {
+          "key5": "value5"
+        }
       }
     ]
   },
   {
     "name": "group1",
-    "type": "object",
-    "status": "=",
-    "value":  "",
     "children": [
       {
         "name": "baz",
-        "type": "value",
-        "status": "-",
-        "value":  "bas",
-        "children": []
-      },
-      {
-        "name": "baz",
-        "type": "value",
-        "status": "+",
-        "value":  "bars",
-        "children": []
+        "type": "updated",
+        "oldValue": "bas",
+        "newValue": "bars"
       },
       {
         "name": "foo",
-        "type": "value",
-        "status": "=",
-        "value":  "bar",
-        "children": []
+        "type": "unchanged",
+        "oldValue": "bar"
       },
       {
         "name": "nest",
-        "type": "object",
-        "status": "-",
-        "value":  "",
-        "children": [
-          {
-            "name": "key",
-            "type": "value",
-            "status": "=",
-            "value":  "value",
-            "children": []
-          }
-        ]
-      },
-      {
-        "name": "nest",
-        "type": "value",
-        "status": "+",
-        "value":  "str",
-        "children": []
+        "type": "updated",
+        "oldValue": {
+          "key": "value"
+        },
+        "newValue": "str"
       }
     ]
   },
   {
     "name": "group2",
-    "type": "object",
-    "status": "-",
-    "value":  "",
-    "children": [
-      {
-        "name": "abc",
-        "type": "value",
-        "status": "=",
-        "value":  "12345",
-        "children": []
-      }
-    ]
+    "type": "removed",
+    "oldValue": {
+      "abc": "12345"
+    }
   },
   {
     "name": "group3",
-    "type": "object",
-    "status": "+",
-    "value":  "",
-    "children": [
-      {
-        "name": "fee",
-        "type": "value",
-        "status": "=",
-        "value":  "100500",
-        "children": []
-      }
-    ]
+    "type": "added",
+    "newValue": {
+      "fee": "100500"
+    }
   }
 ]

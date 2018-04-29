@@ -1,0 +1,171 @@
+[
+  {
+    "name": "common",
+    "type": "object",
+    "status": "=",
+    "value":  "",
+    "children": [
+      {
+        "name": "setting1",
+        "type": "value",
+        "status": "=",
+        "value": "Value 1",
+        "children": []
+      },
+      {
+        "name": "setting2",
+        "type": "value",
+        "status": "-",
+        "value": "200",
+        "children": []
+      },
+      {
+        "name": "setting3",
+        "type": "value",
+        "status": "-",
+        "value": true,
+        "children": []
+      },
+      {
+        "name": "setting3",
+        "type": "object",
+        "status": "+",
+        "value": "",
+        "children": [
+          {
+            "name": "key",
+            "type": "value",
+            "status": "=",
+            "value": "value",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "setting6",
+        "type": "object",
+        "status": "=",
+        "value": "",
+        "children": [
+          {
+            "name": "key",
+            "type": "value",
+            "status": "=",
+            "value": "value",
+            "children": []
+          },
+          {
+            "name": "ops",
+            "type": "value",
+            "status": "+",
+            "value": "vops",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "setting4",
+        "type": "value",
+        "status": "+",
+        "value": "blah blah",
+        "children": []
+      },
+      {
+        "name": "setting5",
+        "type": "object",
+        "status": "+",
+        "value": "",
+        "children": [
+          {
+            "name": "key5",
+            "type": "value",
+            "status": "=",
+            "value": "value5",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "group1",
+    "type": "object",
+    "status": "=",
+    "value":  "",
+    "children": [
+      {
+        "name": "baz",
+        "type": "value",
+        "status": "-",
+        "value":  "bas",
+        "children": []
+      },
+      {
+        "name": "baz",
+        "type": "value",
+        "status": "+",
+        "value":  "bars",
+        "children": []
+      },
+      {
+        "name": "foo",
+        "type": "value",
+        "status": "=",
+        "value":  "bar",
+        "children": []
+      },
+      {
+        "name": "nest",
+        "type": "object",
+        "status": "-",
+        "value":  "",
+        "children": [
+          {
+            "name": "key",
+            "type": "value",
+            "status": "=",
+            "value":  "value",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "nest",
+        "type": "value",
+        "status": "+",
+        "value":  "str",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "group2",
+    "type": "object",
+    "status": "-",
+    "value":  "",
+    "children": [
+      {
+        "name": "abc",
+        "type": "value",
+        "status": "=",
+        "value":  "12345",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "group3",
+    "type": "object",
+    "status": "+",
+    "value":  "",
+    "children": [
+      {
+        "name": "fee",
+        "type": "value",
+        "status": "=",
+        "value":  "100500",
+        "children": []
+      }
+    ]
+  }
+]
