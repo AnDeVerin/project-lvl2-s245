@@ -28,7 +28,7 @@ export default (astDiff) => {
       return val;
     };
 
-    if (children) {
+    if (type === 'nested') {
       const renderedCildren = _.flatten(children.map(child => renderDiff(child, spaceNum + 4)));
       return `${openIndent}  ${name}: {\n${renderedCildren.join('\n')}\n${closeIndent}}`;
     }

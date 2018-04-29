@@ -13,6 +13,7 @@ const buildDiff = (obj1, obj2) => {
       if (_.isObject(val1) && _.isObject(val2)) {
         return {
           name: key,
+          type: 'nested',
           children: buildDiff(obj1[key], obj2[key]),
         };
       }
