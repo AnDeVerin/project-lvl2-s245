@@ -39,7 +39,7 @@ export default (astDiff) => {
       nested: () => `${openIndent}  ${name}: {\n${_.flatten(children.map(child =>
         renderDiff(child, spaceNum + 4))).join('\n')}\n${closeIndent}}`,
 
-      unchanged: () => `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`
+      unchanged: () => `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`,
     };
     return processElem[type]();
   };
