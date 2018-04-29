@@ -1,6 +1,6 @@
-import _ from 'lodash';
+// import _ from 'lodash';
 
-export default (astDiff) => {
+export default (/* astDiff */) => {
   const resultObject = {};
 
   return JSON.stringify(resultObject);

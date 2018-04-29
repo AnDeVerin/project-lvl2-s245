@@ -6,7 +6,6 @@ const status = {
   added: '+ ',
 };
 
-// вынес функцию
 const stringify = (val, n) => {
   if (val instanceof Object) {
     const keys = _.keys(val);
@@ -30,27 +29,19 @@ export default (astDiff) => {
     const closeIndent = ' '.repeat(spaceNum + 2);
     const statusLine = (type) ? status[type] : '';
 
-    if (type === 'nested') {
-      const renderedCildren = _.flatten(children.map(child => renderDiff(child, spaceNum + 4)));
-      return `${openIndent}  ${name}: {\n${renderedCildren.join('\n')}\n${closeIndent}}`;
-    }
+    const processElem = {
+      added: () => `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`,
+      removed: () => `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`,
 
-    if (type === 'updated') {
-      return [`${openIndent}${status.removed}${name}: ${stringify(oldValue, spaceNum)}`,
-        `${openIndent}${status.added}${name}: ${stringify(newValue, spaceNum)}`];
-    }
+      updated: () => [`${openIndent}${status.removed}${name}: ${stringify(oldValue, spaceNum)}`,
+        `${openIndent}${status.added}${name}: ${stringify(newValue, spaceNum)}`],
 
-    if (type === 'added') {
-      return `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`;
-    }
+      nested: () => `${openIndent}  ${name}: {\n${_.flatten(children.map(child =>
+        renderDiff(child, spaceNum + 4))).join('\n')}\n${closeIndent}}`,
 
-    if (type === 'removed') {
-      return `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`;
-    }
-
-    // if (type === 'unchanged') - закомментировал, чтобы eslint не ругался,
-    // что нет безусловного return
-    return `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`;
+      unchanged: () => `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`
+    };
+    return processElem[type]();
   };
   const renderedList = astDiff.map(obj => renderDiff(obj, 2));
   return `{\n${renderedList.join('\n')}\n}`;
