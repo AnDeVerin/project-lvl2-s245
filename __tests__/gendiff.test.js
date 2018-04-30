@@ -1,16 +1,16 @@
 import fs from 'fs';
 import genDiff from '../src';
 
-// test('json: genDiff <JSON> to equal result from "json-output.test.res.json" file', () => {
-//   const pathToFile1 = '__tests__/__fixtures__/before.json';
-//   const pathToFile2 = '__tests__/__fixtures__/after.json';
-//   const pathToResFile = '__tests__/__fixtures__/json-output.test.res.json';
-//   const diffFromFile = fs.readFileSync(pathToResFile, 'utf8');
-//   const diff = genDiff(pathToFile1, pathToFile2, 'json');
-//   const jsonFromFile = JSON.parse(diffFromFile);
-//   const jsonFromDiff = JSON.parse(diff);
-//   expect(jsonFromDiff).toEqual(jsonFromFile);
-// });
+test('json: genDiff <JSON> to equal result from "diff-ast.test.res.json" file', () => {
+  const pathToFile1 = '__tests__/__fixtures__/before.json';
+  const pathToFile2 = '__tests__/__fixtures__/after.json';
+  const pathToResFile = '__tests__/__fixtures__/diff-ast.test.res.json';
+  const diffFromFile = fs.readFileSync(pathToResFile, 'utf8');
+  const diff = genDiff(pathToFile1, pathToFile2, 'json');
+  const jsonFromFile = JSON.parse(diffFromFile);
+  const jsonFromDiff = JSON.parse(diff);
+  expect(jsonFromDiff).toEqual(jsonFromFile);
+});
 
 test('plain: genDiff <JSON> to equal result from "diff-plain-output.test.res" file', () => {
   const pathToFile1 = '__tests__/__fixtures__/before.json';

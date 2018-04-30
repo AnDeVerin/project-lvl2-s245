@@ -1,6 +1,7 @@
 [
   {
     "name": "common",
+    "type": "nested",
     "children": [
       {
         "name": "setting1",
@@ -22,6 +23,7 @@
       },
       {
         "name": "setting6",
+        "type": "nested",
         "children": [
           {
             "name": "key",
@@ -51,6 +53,7 @@
   },
   {
     "name": "group1",
+    "type": "nested",
     "children": [
       {
         "name": "baz",
