@@ -10,6 +10,8 @@ const stringifyUpd = (val) => {
   return `'${val}'`;
 };
 
+const changedItem = node => node.type !== 'unchanged';
+
 export default (astDiff) => {
   const renderDiff = (elem, prefix) => {
     const {
@@ -27,12 +29,12 @@ export default (astDiff) => {
       added: () => `Property '${newName}' was added with ${stringifyAdded(value)}`,
       removed: () => `Property '${newName}' was removed`,
       updated: () => `Property '${newName}' was updated. From ${stringifyUpd(oldValue)} to ${stringifyUpd(newValue)}`,
-      nested: () => `${_.flatten(children.filter(node => node.type !== 'unchanged').map(child => renderDiff(child, newName))).join('\n')}`,
+      nested: () => `${_.flatten(children.filter(changedItem).map(child => renderDiff(child, newName))).join('\n')}`,
     };
     return processElem[type]();
   };
 
-  const changedNodes = astDiff.filter(node => node.type !== 'unchanged');
-  const renderedList = changedNodes.map(obj => renderDiff(obj, ''));
+  const changedNodes = astDiff.filter(changedItem);
+  const renderedList = changedNodes.map(node => renderDiff(node, ''));
   return `${renderedList.join('\n')}`;
 };

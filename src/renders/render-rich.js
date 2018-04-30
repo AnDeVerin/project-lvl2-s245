@@ -1,13 +1,15 @@
 import _ from 'lodash';
 
 const status = {
-  unchanged: '  ',
-  removed: '- ',
   added: '+ ',
+  removed: '- ',
+  updated: '',
+  nested: '',
+  unchanged: '  ',
 };
 
 const stringify = (val, n) => {
-  if (val instanceof Object) {
+  if (_.isObject(val)) {
     const keys = _.keys(val);
     const renderedKeys = keys.map(key => `${' '.repeat(n + 6)}${key}: ${val[key]}`);
     return `{\n${renderedKeys.join('\n')}\n${' '.repeat(n + 2)}}`;
@@ -25,12 +27,14 @@ export default (astDiff) => {
       newValue,
       children,
     } = elem;
+
     const openIndent = ' '.repeat(spaceNum);
     const closeIndent = ' '.repeat(spaceNum + 2);
-    const statusLine = (type) ? status[type] : '';
+    const statusLine = status[type];
 
     const processElem = {
       added: () => `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`,
+
       removed: () => `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`,
 
       updated: () => [`${openIndent}${status.removed}${name}: ${stringify(oldValue, spaceNum)}`,
@@ -41,8 +45,10 @@ export default (astDiff) => {
 
       unchanged: () => `${openIndent}${statusLine}${name}: ${stringify(value, spaceNum)}`,
     };
+
     return processElem[type]();
   };
-  const renderedList = astDiff.map(obj => renderDiff(obj, 2));
+
+  const renderedList = astDiff.map(node => renderDiff(node, 2));
   return `{\n${renderedList.join('\n')}\n}`;
 };
