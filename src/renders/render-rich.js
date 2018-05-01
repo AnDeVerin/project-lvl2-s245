@@ -22,33 +22,21 @@ export default (astDiff) => {
     const openIndent = ' '.repeat(spaceNum);
     const closeIndent = ' '.repeat(spaceNum + 2);
 
-    const keyTypes = [
-      {
-        type: 'added',
-        process: () => `${openIndent}+ ${name}: ${stringify(value, spaceNum)}`,
-      },
-      {
-        type: 'removed',
-        process: () => `${openIndent}- ${name}: ${stringify(value, spaceNum)}`,
-      },
-      {
-        type: 'updated',
-        process: () => [`${openIndent}- ${name}: ${stringify(oldValue, spaceNum)}`,
-          `${openIndent}+ ${name}: ${stringify(newValue, spaceNum)}`],
-      },
-      {
-        type: 'nested',
-        process: () => `${openIndent}  ${name}: {\n${_.flatten(children.map(child =>
-          renderDiff(child, spaceNum + 4))).join('\n')}\n${closeIndent}}`,
-      },
-      {
-        type: 'unchanged',
-        process: () => `${openIndent}  ${name}: ${stringify(value, spaceNum)}`,
-      },
-    ];
+    const processElem = {
+      added: () => `${openIndent}+ ${name}: ${stringify(value, spaceNum)}`,
 
-    const { process } = _.find(keyTypes, item => item.type === type);
-    return process();
+      removed: () => `${openIndent}- ${name}: ${stringify(value, spaceNum)}`,
+
+      updated: () => [`${openIndent}- ${name}: ${stringify(oldValue, spaceNum)}`,
+        `${openIndent}+ ${name}: ${stringify(newValue, spaceNum)}`],
+
+      nested: () => `${openIndent}  ${name}: {\n${_.flatten(children.map(child =>
+        renderDiff(child, spaceNum + 4))).join('\n')}\n${closeIndent}}`,
+
+      unchanged: () => `${openIndent}  ${name}: ${stringify(value, spaceNum)}`,
+    };
+
+    return processElem[type]();
   };
 
   const renderedList = astDiff.map(node => renderDiff(node, 2));

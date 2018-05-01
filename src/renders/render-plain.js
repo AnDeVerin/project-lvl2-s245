@@ -25,27 +25,17 @@ export default (astDiff) => {
 
     const newName = (prefix) ? `${prefix}.${name}` : name;
 
-    const keyTypes = [
-      {
-        type: 'added',
-        process: () => `Property '${newName}' was added with ${stringifyAdded(value)}`,
-      },
-      {
-        type: 'removed',
-        process: () => `Property '${newName}' was removed`,
-      },
-      {
-        type: 'updated',
-        process: () => `Property '${newName}' was updated. From ${stringifyUpd(oldValue)} to ${stringifyUpd(newValue)}`,
-      },
-      {
-        type: 'nested',
-        process: () => `${_.flatten(children.filter(changedItem).map(child => renderDiff(child, newName))).join('\n')}`,
-      },
-    ];
+    const processElem = {
+      added: () => `Property '${newName}' was added with ${stringifyAdded(value)}`,
 
-    const { process } = _.find(keyTypes, item => item.type === type);
-    return process();
+      removed: () => `Property '${newName}' was removed`,
+
+      updated: () => `Property '${newName}' was updated. From ${stringifyUpd(oldValue)} to ${stringifyUpd(newValue)}`,
+
+      nested: () => `${_.flatten(children.filter(changedItem).map(child => renderDiff(child, newName))).join('\n')}`,
+    };
+
+    return processElem[type]();
   };
 
   const changedNodes = astDiff.filter(changedItem);
