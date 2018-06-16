@@ -1,3 +1,5 @@
+[Мой профиль @hexlet.io](https://ru.hexlet.io/u/andeverin)
+
 # adv-hexlet-2
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/e8248f3e8293c13bc01d/maintainability)](https://codeclimate.com/github/AnDeVerin/project-lvl2-s245/maintainability)
@@ -5,7 +7,7 @@
 [![Build Status](https://travis-ci.org/AnDeVerin/project-lvl2-s245.svg?branch=master)](https://travis-ci.org/AnDeVerin/project-lvl2-s245)
 
 
-[Мой учебный проект @hexlet.io](https://ru.hexlet.io/u/andeverin)
+
 ## Проект Вычислитель отличий / Фронтенд JS-программист
 ### Уровень: 2. Старт проекта 23 апреля 2018
 
